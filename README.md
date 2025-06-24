@@ -9,7 +9,7 @@ create a Codespace, then open the file
 [lessons/00_Getting_Started/README.md](lessons/00_Getting_Started/README.md).
 This will give you an overview of the module and how to get started.
 
-The easiest way to get started is, from the [Python-Games Github Repo](https://github.com/league-curriculum Python-Games), click on the green
+The easiest way to get started is, from the [Python-Games Github Repo](https://github.com/league-curriculum/Python-Games), click on the green
 ![code](https://images.jointheleague.org/github/code_button_sm.png) button, then
 select the 'Codespaces' tab, then
 ![ccom](https://images.jointheleague.org/github/create_codespace_sm.png). This

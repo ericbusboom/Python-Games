@@ -16,8 +16,11 @@ SCREEN_WIDTH, SCREEN_HEIGHT = 600, 600
 SQUARE_SIZE = 50
 SQUARE_COLOR = (0, 128, 255) # Red-Green-Blue color in the range 0-255
 BACKGROUND_COLOR = (255, 255, 255) # White
-SQUARE_SPEED = 5
+SQUARE_SPEED = 300 
 FPS = 60
+
+v = SQUARE_SPEED  # Speed of the square in pixels per second
+d_t = 1 / FPS  # Time step for physics calculations
 
 # Initialize the screen
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
@@ -29,8 +32,8 @@ clock = pygame.time.Clock()
 # Main function
 def main():
     # Initial position of the square
-    square_x = SCREEN_WIDTH // 2 - SQUARE_SIZE // 2
-    square_y = SCREEN_HEIGHT // 2 - SQUARE_SIZE // 2
+    x = SCREEN_WIDTH // 2 - SQUARE_SIZE // 2
+    y = SCREEN_HEIGHT // 2 - SQUARE_SIZE // 2
     
     running = True
     
@@ -48,19 +51,32 @@ def main():
         # with a boolean value of whether they are pressed or not
         keys = pygame.key.get_pressed()
 
+
+        # Calculate the change tin the position
+        d_x = 0
+        d_y = 0
+
         # Move the square based on arrow keys
         if keys[pygame.K_LEFT]:
-            square_x -= SQUARE_SPEED
+            d_x = -v * d_t
+          
         if keys[pygame.K_RIGHT]:
-            square_x += SQUARE_SPEED
+            d_x = v * d_t
+          
         if keys[pygame.K_UP]:
-            square_y -= SQUARE_SPEED
+            d_y = -v * d_t
+          
         if keys[pygame.K_DOWN]:
-            square_y += SQUARE_SPEED
+            d_y = v * d_t
+           
+        # Update the position of the square
+        x = x + d_x
+        y = y + d_y
+
 
         # Prevent the square from going off the screen
-        square_x = max(0, min(SCREEN_WIDTH - SQUARE_SIZE, square_x))
-        square_y = max(0, min(SCREEN_HEIGHT - SQUARE_SIZE, square_y))
+        x = max(0, min(SCREEN_WIDTH - SQUARE_SIZE, x))
+        y = max(0, min(SCREEN_HEIGHT - SQUARE_SIZE, y))
 
         # This will clear the screen by filling it 
         # with the background color. If we didn't do this, 
@@ -68,7 +84,7 @@ def main():
         screen.fill(BACKGROUND_COLOR)
 
         # Draw the square
-        pygame.draw.rect(screen, SQUARE_COLOR, (square_x, square_y, SQUARE_SIZE, SQUARE_SIZE))
+        pygame.draw.rect(screen, SQUARE_COLOR, (x, y, SQUARE_SIZE, SQUARE_SIZE))
 
         # Update the display. Imagine that the screen is two different whiteboards. One
         # whiteboard is currently visible to the player, and the other whiteboard is being

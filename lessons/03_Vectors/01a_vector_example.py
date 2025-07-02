@@ -8,7 +8,7 @@ from jtlgames.vector20 import Vector20Factory
 pygame.init()
 
 # Screen setup
-screen_width = 800
+screen_width = 600
 screen_height = 600
 screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption("Vector with Arrow")

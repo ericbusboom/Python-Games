@@ -4,7 +4,7 @@ Here are the general rules for the classic arcade game **Frogger**:
 
 ![example](images/frogger_example.png)
 
-Plan an online version of Frogger [here](https://wcgunter.github.io/Frogger-JS/)
+Play an online version of Frogger [here](https://wcgunter.github.io/Frogger-JS/)
 ## Objective
 
 The goal of **Frogger** is to guide your frog from the bottom of the screen to
